@@ -1,0 +1,15 @@
+services:
+  dealhunter:
+    build: .
+    container_name: dealhunter
+    restart: unless-stopped
+    ports:
+      - "${HOST_PORT:-8080}:8080"
+    environment:
+      SECRET_KEY: "${SECRET_KEY:-replace-this-with-a-long-random-secret}"
+      DATABASE_PATH: /app/data/deals.db
+      MAX_UPLOAD_MB: "5"
+    volumes:
+      - dealhunter_data:/app/data
+volumes:
+  dealhunter_data:
