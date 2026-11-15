@@ -11,5 +11,11 @@ services:
       MAX_UPLOAD_MB: "5"
     volumes:
       - dealhunter_data:/app/data
+    networks:
+      - proxy
 volumes:
   dealhunter_data:
+
+networks:
+  proxy:
+    external: true
